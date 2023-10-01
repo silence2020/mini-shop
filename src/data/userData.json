@@ -1,0 +1,21 @@
+{
+    "code": 200,
+    "msg": "is ok",
+    "data": [
+        {
+            "name": "zyb",
+            "age": 24,
+            "address": "djisdjdfhf"
+        },
+        {
+            "name": "kic",
+            "age": 25,
+            "address": "jyujy"
+        },
+        {
+            "name": "fkc",
+            "age": 36,
+            "address": "aergthyhyj"
+        }
+    ]
+}
