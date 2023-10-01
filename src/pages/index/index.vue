@@ -2,8 +2,11 @@
   <Navbar />
   <scroll-view refresher-enabled @refresherrefresh="onRefresherrefresh" :refresher-triggered="isTriggered"
     @scrolltolower="onScrolltolower" scroll-y class="scroll-Y">
-    <XtxSwiper :list="bannerList" />
-    <XtxColorBlock ref="colorBlock" />
+    <Skeleton v-if="isLoading" />
+    <template v-else>
+      <XtxSwiper :list="bannerList" />
+      <XtxColorBlock ref="colorBlock" />
+    </template>
   </scroll-view>
 </template>
 
@@ -14,12 +17,18 @@ import type { XtxColorBlockInstance } from "@/types/components";
 import type { BannerItem } from "@/types/home";
 import { onLoad } from "@dcloudio/uni-app";
 import { ref } from "vue";
+import Skeleton from "@/pages/index/components/Skeleton.vue";
 
 const bannerList = ref<BannerItem[]>([])
+//定义开关
+const isLoading = ref(true)
 onLoad(async () => {
+  //isLoading
+  isLoading.value = true
   const res = await getBannerItemAPI()
   bannerList.value = res.result
-
+  //is not Loading
+  isLoading.value = false
 })
 
 const colorBlock = ref<XtxColorBlockInstance>()

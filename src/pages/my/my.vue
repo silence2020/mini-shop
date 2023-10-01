@@ -21,6 +21,7 @@ const info = ref<BannerItem[]>([])
 
 
 
+
 </script>
 
 <template>

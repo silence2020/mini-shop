@@ -42,7 +42,10 @@ defineExpose({
 <template>
     <view style="width: 100%; overflow: auto;">
         <view class="view-item" :style="{ backgroundColor: item.color }" v-for="(item, index) in info" :key="index">
-            {{ item.content }}</view>
+            <navigator :url="`/pages/detail/detail?content=${item.content}&color=${item.color}`">
+                {{ item.content }}
+            </navigator>
+        </view>
     </view>
 </template>
 <style scoped>
