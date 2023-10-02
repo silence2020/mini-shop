@@ -13,12 +13,11 @@
 <script setup lang="ts">
 import Navbar from "@/pages/index/components/Navbar.vue";
 import { getBannerItemAPI } from "@/services/home";
-import type { XtxColorBlockInstance } from "@/types/components";
 import type { BannerItem } from "@/types/home";
 import { onLoad } from "@dcloudio/uni-app";
 import { ref } from "vue";
 import Skeleton from "@/pages/index/components/Skeleton.vue";
-
+import { useColorBlock } from "@/composables/index";
 const bannerList = ref<BannerItem[]>([])
 //定义开关
 const isLoading = ref(true)
@@ -31,10 +30,11 @@ onLoad(async () => {
   isLoading.value = false
 })
 
-const colorBlock = ref<XtxColorBlockInstance>()
-const onScrolltolower = () => {
-  colorBlock.value?.getMore()
-}
+const {colorBlock, onScrolltolower} = useColorBlock()
+// const colorBlock = ref<XtxColorBlockInstance>()
+// const onScrolltolower = () => {
+//   colorBlock.value?.getMore()
+// }
 
 const isTriggered = ref(false)
 const onRefresherrefresh = async () => {

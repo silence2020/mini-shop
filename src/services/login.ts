@@ -25,7 +25,8 @@ export const simpleLoginWeiXinAPI = (phonenumber: string) => {
             accout: '15233452375',
             id: 'WX_0808',
             nickname: 'zyb_2023',
-            mobile: '15233452375'
+            mobile: '15233452375',
+            avatar: '/static/logo.png'
         }
         resolve(res)
     })

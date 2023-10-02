@@ -1,37 +1,61 @@
 <script setup lang="ts">
-import Vue from 'vue';
-import { useMemberStore } from '@/stores/modules/member'
-import { http } from '@/utils/http'
-import { onMounted } from 'vue';
-import { getRandomItem } from "@/services/home";
-import { ref } from 'vue';
-import type { BannerItem } from '@/types/home';
-const memberStore = useMemberStore()
-
-const getData = async () => {
-  const res = await http<number[]>({
-    method: 'GET',
-    url: '/home/banner',
-    header: {}
-  })
-  console.log('请求成功：' + res.result)
-}
-
-const info = ref<BannerItem[]>([])
-
-
-
-
+import { userInfoStore } from "@/stores/modules/userinfo";
+const userStore = userInfoStore()
 </script>
 
 <template>
-  <div class="my">my</div>
-  <text>{{ memberStore.profile }}</text>
-  <button type="primary" plain @tap="memberStore.setProfile('我的配置')">按钮</button>
-  <button type="primary" plain @tap="getData">请求数据</button>
-  <view style="width: 100%; overflow: auto;">
-    <XtxColorBlock />
+  <view class="view-item">
+    <view>
+      <image class="view-image" :src="userStore.userInfo?.avatar" mode="aspectFit" />
+      <text class="view-text">{{ userStore.userInfo?.nickname || userStore.userInfo?.accout }}</text>
+      <view class="view-setting" v-if="userStore.userInfo">
+        <navigator url="/subpackage/setting/setting">
+          <text>设置</text>
+        </navigator>
+      </view>
+    </view>
   </view>
 </template>
 
-<style scoped></style>
+<style scoped>
+.view-item {
+  height: 300rpx;
+  line-height: 300rpx;
+  text-align: center;
+  font-size: 36rpx;
+  width: 100%;
+  background-color: rgb(199, 15, 144);
+}
+
+.view-image {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  width: 100rpx;
+  margin-top: 140rpx;
+  margin-left: 80rpx;
+  float: left;
+}
+
+.view-text {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  width: 100rpx;
+  margin-top: 140rpx;
+  margin-left: 20rpx;
+  float: left;
+  color: aliceblue;
+}
+
+.view-setting {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  width: 100rpx;
+  margin-top: 140rpx;
+  margin-left: 260rpx;
+  float: left;
+  color: aliceblue;
+}
+</style>

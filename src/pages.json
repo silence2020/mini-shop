@@ -19,6 +19,8 @@
 		{
 			"path": "pages/my/my",
 			"style": {
+				"navigationStyle": "custom",
+				"navigationBarTextStyle": "white",
 				"navigationBarTitleText": "我的"
 			}
 		},
@@ -57,5 +59,51 @@
 				"text": "我的"
 			}
 		]
+	},
+	"subPackages": [
+		{
+			"root": "subpackage/setting",
+			"pages": [
+				{
+					"path": "setting",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white",
+						"navigationBarTitleText": "设置"
+					}
+				}
+			]
+		},
+		{
+			"root": "subpackage/myinfo",
+			"pages": [
+				{
+					"path": "myinfo",
+					"style": {
+						"navigationStyle": "custom",
+						"navigationBarTextStyle": "white",
+						"navigationBarTitleText": "个人信息"
+					}
+				}
+			]
+		}
+	],
+	"preloadRule": {
+		//进入pages/my/my页面时下载分包
+		"pages/my/my": {
+			//任何网络情况都下载
+			"network": "all",
+			//subPackages的分包root
+			"packages": [
+				"subpackage/setting"
+			]
+		},
+		//进入[设置]页面时预下载分包
+		"subpackage/setting/setting": {
+			"network": "all",
+			"packages": [
+				"subpackage/myinfo"
+			]
+		}
 	}
 }
