@@ -17,7 +17,7 @@ const userStore = userInfoStore()
   </view>
   <navigator url="/pages/test/test">
     <button style="color:#ffffff;backgroundColor:#d08a3a;borderColor:#d08a3a" type="default">
-      测试
+      测试SKU
     </button>
   </navigator>
 </template>

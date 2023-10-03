@@ -75,7 +75,6 @@
 				{
 					"path": "setting",
 					"style": {
-						"navigationStyle": "custom",
 						"navigationBarTextStyle": "white",
 						"navigationBarTitleText": "设置"
 					}

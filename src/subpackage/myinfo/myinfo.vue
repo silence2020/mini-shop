@@ -39,12 +39,12 @@ const onAvatar = () => {
     success: (res) => {
       //微信临时文件，刷新页面会清除（没有接口持久化保存图片）
       const { tempFilePath } = res.tempFiles[0]
+      
       uni.uploadFile({
         url: '/user/profile/avatar',
         name: 'file',
         filePath: tempFilePath,
         success: (res) => {
-          debugger
           if (res.statusCode === 200) {
             imageUrl.value = JSON.parse(res.data).avatar
             //更新userStore，个人不建议这样修改；所有关于状态管理的修改都应该定义在Store内部的action中，组件调用action进行修改
