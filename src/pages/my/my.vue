@@ -15,6 +15,11 @@ const userStore = userInfoStore()
       </view>
     </view>
   </view>
+  <navigator url="/pages/test/test">
+    <button style="color:#ffffff;backgroundColor:#d08a3a;borderColor:#d08a3a" type="default">
+      测试
+    </button>
+  </navigator>
 </template>
 
 <style scoped>
